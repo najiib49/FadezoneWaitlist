@@ -3,4 +3,7 @@
     <string name="Name">NAME</string>
     <string name="Done">DONE</string>
     <string name="Phone">PHONE</string>
+    <string name="enter_name">Enter a name</string>
+    <string name="enter_phone_number">Enter a phone number</string>
+    <string name="button_submit">Submit</string>
 </resources>

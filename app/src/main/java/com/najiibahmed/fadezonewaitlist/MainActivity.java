@@ -1,5 +1,6 @@
 package com.najiibahmed.fadezonewaitlist;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnClick_AddNewCustomer(View view) {
         // handles clicks on the add button
+        Intent intent = new Intent(this, AddCustomerActivity.class);
+        startActivity(intent);
     }
 
     private void displayMessage(String message){
