@@ -15,6 +15,7 @@
         <include layout="@layout/toolbar"/>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginStart="8dp"
@@ -60,6 +61,15 @@
                 android:text="@string/Phone" />
         </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        </android.support.v7.widget.RecyclerView>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButtonAddNewCustomer"
             android:layout_width="wrap_content"
