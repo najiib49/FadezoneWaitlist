@@ -19,7 +19,7 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/TextViewName"
         android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_marginStart="8dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextCustomerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,10 +47,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/TextViewName" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -62,10 +62,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCustomerName" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -78,7 +78,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumber" />
 
     <Button
         android:id="@+id/btn_submit"
@@ -90,8 +90,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/button_submit"
+        android:onClick="OnClick_addCustomerSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber" />
 
 </android.support.constraint.ConstraintLayout>
