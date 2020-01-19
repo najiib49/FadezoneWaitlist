@@ -11,15 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnCustomerListener {
     private static final String TAG = "MainActivity";
     public static final int ADD_CUSTOMER= 50;
     private Toolbar toolbar;
@@ -72,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        adapter = new RecyclerViewAdapter (this, customerNames, customerPhoneNumbers, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ItemTouchHelper.Callback callback = new CustomerListItemHelper(adapter);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        adapter.setItemTouchHelper(itemTouchHelper);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setAdapter(adapter);
+
+
     }
 
     public void OnClick_AddNewCustomer(View view) {
@@ -106,17 +118,17 @@ public class MainActivity extends AppCompatActivity {
             customerNames.add(customerName);
             customerPhoneNumbers.add(customerPhoneNumber);
 
-            Log.d(TAG, "onActivityResult: customers populated ");
 
-//            showMyToast("Data recieved");
 
-            adapter = new RecyclerViewAdapter (this, customerNames, customerPhoneNumbers);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
+//            adapter = new RecyclerViewAdapter (this, customerNames, customerPhoneNumbers, this);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//            ItemTouchHelper.Callback callback = new CustomerListItemHelper(adapter);
+//            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+//            adapter.setItemTouchHelper(itemTouchHelper);
+//            itemTouchHelper.attachToRecyclerView(recyclerView);
+//            recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-
-
-
 
 
 
@@ -124,31 +136,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        boolean b = true;
-//
-//        if (requestCode == RESULT_OK){
-//            String customerName = data.getStringExtra("customerName");
-//            String customerPhoneNumber = data.getStringExtra("customerPhoneNumber");
-//            customerNames.add(customerName);
-//            customerPhoneNumbers.add(customerPhoneNumber);
-//
-//            Log.d(TAG, "onActivityResult: customers populated ");
-//
-////            showMyToast("Data recieved");
-//
-//            adapter = new RecyclerViewAdapter (this, customerNames, customerPhoneNumbers);
-//            recyclerView.setAdapter(adapter);
-//
-//
-//
-//
-//
-//
-//        }
-//    }
     /**
      * show a quick toast with the message provided
      * @param message the message to show in the toast
@@ -156,5 +143,17 @@ public class MainActivity extends AppCompatActivity {
     private void showMyToast(String message) {
         Toast.makeText(this, message,
                 Toast.LENGTH_LONG).show();
+    }
+
+
+    public void onClick_Done(View view) {
+
+        boolean checked = ((CheckBox)(view)).isChecked();
+
+    }
+
+    @Override
+    public void onCustomerClick(int position) {
+        customerNames.get(position);
     }
 }
