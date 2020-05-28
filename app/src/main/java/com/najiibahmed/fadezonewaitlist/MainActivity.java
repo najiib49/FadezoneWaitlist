@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.OnCustomerListener {
     private static final String TAG = "MainActivity";
     public static final int ADD_CUSTOMER= 50;
+    public static final int EDIT_CUSTOMER= 51;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
     public void OnClick_AddNewCustomer(View view) {
         // handles clicks on the add button
-        Intent intent = new Intent(this, AddCustomerActivity.class);
+        Intent intent = new Intent(this, AddEditCustomerActivity.class);
         startActivityForResult(intent, ADD_CUSTOMER);
     }
 
@@ -155,5 +155,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     @Override
     public void onCustomerClick(int position) {
         customerNames.get(position);
+        Intent intent = new Intent(this, AddEditCustomerActivity.class);
+        intent.putExtra("customerName", customerNames);
+        intent.putExtra("customerPhoneNumber", customerPhoneNumbers);
+        startActivityForResult(intent,EDIT_CUSTOMER);
+
     }
 }

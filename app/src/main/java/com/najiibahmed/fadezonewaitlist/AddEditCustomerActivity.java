@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddCustomerActivity extends AppCompatActivity {
+public class AddEditCustomerActivity extends AppCompatActivity {
     private Toolbar toolbarAddCustomer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,9 @@ public class AddCustomerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_customer);
 
         toolbarAddCustomer = findViewById(R.id.toolbarAddCustomer);
+        Intent intent = getIntent();
+
+
         toolbarAddCustomer.setTitle("Add A Customer");
         toolbarAddCustomer.setNavigationIcon(R.drawable.ic_arrow_back_);
         setSupportActionBar(toolbarAddCustomer);
